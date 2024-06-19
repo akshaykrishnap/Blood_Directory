@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal'
 import { ToastContainer, toast } from 'react-toastify';
 import { addReciverAPI, deleteReciverAPI, userReciverAPI } from '../Services/allAPI';
 import EditReciver from './EditReciver';
+import Emaildonor from './Emaildonor';
 
 function ReciversList() {
 
@@ -156,10 +157,10 @@ function ReciversList() {
 
           </thead>
           {allReciverData?.length > 0 ?
-            allReciverData?.map(items => (<tbody>
+            allReciverData?.map((items,index )=> (<tbody>
               <tr>
                 <td>
-                  {items.index + 1}
+                  {index + 1}
                 </td>
                 <td>
                   {items.name}
@@ -167,8 +168,8 @@ function ReciversList() {
                 <td>
                   {items.bloodgroup}
                 </td>
-                <td>
-                  <button style={{ backgroundColor: 'blue', color: 'white' }} className='btn'>Contact</button>
+                <td className='d-flex'>
+                  <Emaildonor/>
                   <button className='btn btn-success ms-2'><EditReciver reciver={items} /></button>
                   <button onClick={()=>handleDelete(items._id)}className='btn btn-warning ms-2'><FontAwesomeIcon icon={faTrash} /></button>
                 </td>

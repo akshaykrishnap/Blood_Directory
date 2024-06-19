@@ -6,6 +6,7 @@ import {  faTrash } from '@fortawesome/free-solid-svg-icons'
 import { addDonorAPI, deleteDonorAPI, userDonorAPI } from '../Services/allAPI';
 import { ToastContainer, toast } from 'react-toastify';
 import EditDonor from './EditDonor';
+import Emaildonor from './Emaildonor';
 
 function DonorsList() {
 
@@ -153,10 +154,10 @@ function DonorsList() {
 
           </thead>
           {allDonorData?.length > 0 ?
-            allDonorData?.map(items =>(<tbody>
+            allDonorData?.map((items,index)=>(<tbody>
               <tr>
                 <td>
-                  {items.index+1}
+                  {index+1}
                 </td>
                 <td>
                   {items.name}
@@ -164,8 +165,8 @@ function DonorsList() {
                 <td>
                   {items.bloodgroup}
                 </td>
-                <td>
-                  <button style={{ backgroundColor: 'blue', color: 'white' }} className='btn'>Contact</button>
+                <td className='d-flex'>
+                  <Emaildonor/>
                   <button className='btn btn-success ms-2'><EditDonor donor={items}/></button>
                   <button onClick={()=>handleDelete(items._id)} className='btn btn-warning ms-2'><FontAwesomeIcon icon={faTrash} /></button>
                 </td>
