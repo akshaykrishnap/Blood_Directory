@@ -46,13 +46,19 @@ function Emaildonor() {
           <Modal.Title>Email</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form className='form-control' ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input type="text" name="user_name" />
-      <label>Email</label>
-      <input type="email" name="user_email" />
-      <label>Message</label>
-      <input name="message" type="text" />
+        <form style={{justifyContent:'center',alignItems:'center',te}} className='form-control justify-content-center' ref={form} onSubmit={sendEmail}>
+      <div>
+        <label>Name</label>
+        <input className='form-control' type="text" name="user_name" />
+      </div>
+     <div>
+       <label>Email</label>
+       <input className='form-control' type="email" name="user_email" />
+     </div>
+   <div>
+       <label>Message</label>
+       <input name="message" type="text" />
+   </div>
       <input className='form-control' onClick={handleClose} type="submit" value="Send" />
       
     </form>
