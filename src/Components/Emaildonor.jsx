@@ -47,15 +47,15 @@ function Emaildonor() {
         </Modal.Header>
         <Modal.Body>
         <form style={{justifyContent:'center',alignItems:'center',textAlign:'center'}} className='form-control justify-content-center' ref={form} onSubmit={sendEmail}>
-      <div>
+      <div className='d-flex m-2 '>
         <label>Name</label>
         <input className='form-control' type="text" name="user_name" />
       </div>
-     <div>
+     <div className='d-flex m-2'>
        <label>Email</label>
        <input className='form-control' type="email" name="user_email" />
      </div>
-   <div>
+   <div className='d-flex m-2'>
        <label>Message</label>
        <input name="message" type="text" />
    </div>
