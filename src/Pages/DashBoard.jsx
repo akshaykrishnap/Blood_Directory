@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import ReciversList from '../Components/ReciversList'
-
-import DonorsList from '../Components/DonorsList'
 import MenuList from '../Components/MenuList'
+import AdminReciverlist from '../Components/AdminReciverlist'
+import AdminDonorList from '../Components/AdminDonorList'
 
 
 
@@ -32,7 +31,7 @@ setAdminId(JSON.parse(sessionStorage.getItem("existingUsers")).adminId)
 
      <Col>
 
-<DonorsList/>
+<AdminDonorList/>
 
      </Col>
 
@@ -40,9 +39,10 @@ setAdminId(JSON.parse(sessionStorage.getItem("existingUsers")).adminId)
 
      <Row>
 
+
 <Col>
 
-<ReciversList/>
+<AdminReciverlist/>
 
 </Col>
 

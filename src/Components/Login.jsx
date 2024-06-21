@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link, useNavigate } from 'react-router-dom'
@@ -6,11 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faDroplet,faUser } from '@fortawesome/free-solid-svg-icons'
 import { Row, Col } from 'react-bootstrap'
 import { loginAPI, registerAPI } from '../Services/allAPI';
+import { logoutResponseContext } from '../Contex/ContexShare';
 
 
 
 function Login({register}) {
   const RegisterForm = register ? true : false
+
+  /* logout */
+  const {AuthorToken,setAuthorToken} = useContext(logoutResponseContext)
 
   // navigate
   const navigate = useNavigate()
