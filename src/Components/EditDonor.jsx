@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import { editDonorAPI } from '../Services/allAPI';
 
 function EditDonor({ donor }) {
+console.log(donor);
+
 
   const [show, setShow] = useState(false);
 
@@ -35,27 +37,29 @@ function EditDonor({ donor }) {
 
     if (!name || !mobile || !bloodgroup) {
       toast.error('Please Fill The Form Completely')
-    } else {
+    } 
+    else {
       //  object to formData
       const reqBody = new FormData()
-      // add to body append
-      reqBody.append("name", name)
-      reqBody.append("mobile", mobile)
-      reqBody.append("bloodgroup", bloodgroup)
 
-      
-      
-    }
 
-  const result =  await editDonorAPI(id,reqBody,reqHeaders)
+      const result =  await editDonorAPI(donor._id,donorList)
   console.log(result);
   
   if (result.status==200) {
    toast.success('Updated Successfully') 
+         // add to body append
+         reqBody.append("name", name)
+         reqBody.append("mobile", mobile)
+         reqBody.append("bloodgroup", bloodgroup)
    handleClose()
   }
   
-  handleClose()
+
+      
+    }
+
+  
 
   }
 

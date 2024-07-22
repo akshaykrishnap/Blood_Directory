@@ -68,9 +68,14 @@ export const deleteDonorAPI = async(id,reqHeaders)=>{
     return  await commonAPI ('DELETE',`${BASE_URL}/user-donor/delete/${id}`,{},reqHeaders)
 }
 
-// request to delete donor details
+/* // request to delete donor details
 export const editDonorAPI = async(id,reqBody,reqHeaders)=>{
     return  await commonAPI ('PUT',`${BASE_URL}/user-donor/edit/${id}`,reqBody,reqHeaders)
+} */
+
+// request to delete donor details
+export const editDonorAPI = async(id,reqBody)=>{
+    return  await commonAPI ('PUT',`${BASE_URL}/user-donor/edit/${id}`,reqBody)
 }
 
 // request to update donor profile details

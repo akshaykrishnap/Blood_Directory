@@ -170,7 +170,7 @@ function ReciversList() {
                 </td>
                 <td className='d-flex'>
                   <Emaildonor/>
-                  <button className='btn btn-success ms-2'><EditReciver reciver={items} /></button>
+                  <button className='btn btn-success ms-2'>{/* <EditReciver reciver={items} /> */}</button>
                   <button onClick={()=>handleDelete(items._id)}className='btn btn-warning ms-2'><FontAwesomeIcon icon={faTrash} /></button>
                 </td>
               </tr>

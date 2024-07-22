@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
+
 import Modal from 'react-bootstrap/Modal';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,7 +25,9 @@ function Emaildonor() {
       .then(
         () => {
           console.log('SUCCESS!');
-          toast.success('Message sent')
+          console.log("Message Sent");
+          toast.success('Message Sent')
+         
         },
         (error) => {
           console.log('FAILED...', error.text);
@@ -34,17 +36,13 @@ function Emaildonor() {
   };
 
 
-
-
   return (
 
     <>
 <button onClick={handleShow} style={{ backgroundColor: 'blue', color: 'white' }} className='btn'>Contact</button>
 
 <Modal show={show} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Email</Modal.Title>
-        </Modal.Header>
+        
         <Modal.Body>
         <form style={{justifyContent:'center',alignItems:'center',textAlign:'center'}} className='form-control justify-content-center' ref={form} onSubmit={sendEmail}>
       <div className='d-flex m-2 '>
@@ -59,9 +57,10 @@ function Emaildonor() {
        <label>Message</label>
        <input name="message" type="text" />
    </div>
-      <input className='form-control' onClick={handleClose} type="submit" value="Send" />
+   <input className='btn btn-info'  type="submit" value="Send" />
       
     </form>
+    
         </Modal.Body>
         
       </Modal>

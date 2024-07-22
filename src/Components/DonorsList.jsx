@@ -134,6 +134,10 @@ function DonorsList() {
     }
   })
 
+  useEffect(()=>{
+    getAllDonors()
+  },[])
+
   return (
 
 
@@ -148,7 +152,9 @@ function DonorsList() {
               <th>Sl.no</th>
               <th>Name</th>
               <th>Blood-Type</th>
-              <th className='d-flex '>Actions <br /><button onClick={handleShow} className='btn btn-outline-success ms-2'>Add</button></th>
+              <th className='d-flex '>Actions  <br /><button onClick={handleShow} className='btn btn-outline-success ms-2'>Add</button>
+              
+              </th>
 
             </tr>
 
@@ -167,6 +173,7 @@ function DonorsList() {
                 </td>
                 <td className='d-flex'>
                   <Emaildonor/>
+                  
                   <button className='btn btn-success ms-2'><EditDonor donor={items}/></button>
                   <button onClick={()=>handleDelete(items._id)} className='btn btn-warning ms-2'><FontAwesomeIcon icon={faTrash} /></button>
                 </td>

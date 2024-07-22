@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { addReciverAPI, deleteReciverAPI, userReciverAPI } from '../Services/allAPI';
 import EditReciver from './EditReciver';
 import Emaildonor from './Emaildonor';
+import { useReactToPrint } from 'react-to-print';
 
 function AdminReciverlist() {
 
@@ -53,6 +54,14 @@ function AdminReciverlist() {
   })
   console.log(reciverList);
 
+  const cmpPdf= useRef()
+
+    //to print pdf
+const generatePdf =useReactToPrint({
+  content:()=>cmpPdf.current,
+  documentTitle:"Donor_Data",
+  onAfterPrint:()=>toast.success("PDF Ready")
+})
 
   /* token */
 
@@ -148,45 +157,48 @@ function AdminReciverlist() {
     <>
       <div className='m-5'>
         <h2>RECIVERS LIST</h2>
-        <table className='table rounded shadow border '>
-          <thead>
-            <tr>
-              <th>Sl.no</th>
-              <th>Name</th>
-              <th>Blood-Type</th>
-              <th>Contact Number</th>
-              <th className='d-flex'>Actions <br /><button onClick={handleShow} className='btn btn-outline-success ms-2'>Add</button></th>
-            </tr>
-
-          </thead>
-          {allReciverData?.length > 0 ?
-            allReciverData?.map((items,index )=> (<tbody>
-              <tr>
-                <td>
-                  {index + 1}
-                </td>
-                <td>
-                  {items.name}
-                </td>
-                <td>
-                  {items.bloodgroup}
-
-                </td>
-                <td>
-                    {items.mobile}
-                </td>
-                <td className='d-flex'>
-                 
-                  <button className='btn btn-success ms-2'><EditReciver reciver={items} /></button>
-                  <button onClick={()=>handleDelete(items._id)}className='btn btn-warning ms-2'><FontAwesomeIcon icon={faTrash} /></button>
-                </td>
-              </tr>
-
-            </tbody>))
-
-            : <p>No Recivers</p>
-          }
-        </table>
+       <div ref={cmpPdf}>
+         <table className='table rounded shadow border '>
+           <thead>
+             <tr>
+               <th>Sl.no</th>
+               <th>Name</th>
+               <th>Blood-Type</th>
+               <th>Contact Number</th>
+               <th className='d-flex'>Actions <br /><button onClick={handleShow} className='btn btn-outline-success ms-2'>Add</button>
+               <button className='btn btn-info ms-1' onClick={generatePdf}>Export</button></th>
+             </tr>
+        
+           </thead>
+           {allReciverData?.length > 0 ?
+             allReciverData?.map((items,index )=> (<tbody>
+               <tr>
+                 <td>
+                   {index + 1}
+                 </td>
+                 <td>
+                   {items.name}
+                 </td>
+                 <td>
+                   {items.bloodgroup}
+        
+                 </td>
+                 <td>
+                     {items.mobile}
+                 </td>
+                 <td className='d-flex'>
+                  
+                   <button className='btn btn-success ms-2'><EditReciver reciver={items} /></button>
+                   <button onClick={()=>handleDelete(items._id)}className='btn btn-warning ms-2'><FontAwesomeIcon icon={faTrash} /></button>
+                 </td>
+               </tr>
+        
+             </tbody>))
+        
+             : <p>No Recivers</p>
+           }
+         </table>
+       </div>
 
       </div>
       <Modal show={show} onHide={handleClose}>

@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap'
 
 import ReciversList from '../Components/ReciversList'
 import UserMenu from '../Components/UserMenu'
+import DonorsList from '../Components/DonorsList'
 
 function UserDashBoard() {
 
@@ -26,9 +27,12 @@ function UserDashBoard() {
 
      <Col>
 
-<ReciversList  />
+{/* <ReciversList  /> */}
+
 
      </Col>
+
+    <DonorsList/>
 
      </Row>
      
